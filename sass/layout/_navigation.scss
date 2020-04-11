@@ -1,0 +1,114 @@
+.navigation {
+
+
+  &_checkbox {
+    //hiding the checkbox
+    display: none;
+
+  }
+
+  &_button {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    // needs to be on top of the green circle
+    z-index: 2000;
+
+  }
+
+  &_background {
+    // How to create a circle
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    // Need to use background-image. NOT background
+    // As opposed to the linel gradient, which goes from one side to the other...
+    // the radial gradient starts in the middle and speads out.. PCOOL
+    // lighter color on the inside and darker on the outside
+    background-image: radial-gradient($color-primary-light, $color-primary-dark);
+  // how to give something fixed positioning. Stays the same location on the page at all times
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    // so it stays above all other elements
+    // z-index only works on elements with defined positions FYI
+    z-index: 1000;
+
+//VIMP. This blows up the background image so it takes up the whole viewport when you click on the dropdown
+    transform: scale(80);
+
+  }
+
+  &_nav {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    // this needs to be above the background and below the button
+    z-index: 1500;
+
+  }
+// centering the LIs with absolute positioning
+  &_list {
+    // old hockey trick. Could even create a mix in for this
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+// gets rid of bullets
+    list-style: none;
+    text-align: center;
+
+
+
+  }
+
+  &_item {
+      margin: 1rem;
+
+  }
+
+// Need to style the links / text here because it's not an LI. It's a link
+  &_link {
+
+    &:link,
+    &:visited {
+    // need to to do this, so the padding is applied correctly
+    display: inline-block;
+
+    font-size: 3rem;
+    font-weight: 300;
+    // this is how you create a bigger background behind each link
+    padding: 1rem 2rem;
+    color: $color-white;
+    text-decoration: none;
+    text-transform: uppercase;
+    // VCOOL. Did this before. Creates the split background horizontally. It's transparent on the left + white on the right
+    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+    // so this slides the whole linear-gradient to the right, so the transparent part is covering the link background
+    // but when you hover, background position 100% makes it shift to the left somehow
+    background-size: 230%;
+    transition: all .4s;
+
+    span {
+      margin-right: 1rem;
+      display: inline-block;
+    }
+
+}
+    &:hover,
+    &:active {
+      // when you hover, background position 100% makes it shift to the left somehow
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(1rem);
+
+    }
+  }
+}

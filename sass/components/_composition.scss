@@ -1,0 +1,54 @@
+.composition {
+// set the div to relative positioning, so you can position everything else from top
+// left corner of the composition div
+  position: relative;
+
+  &_photo {
+    // use percentages for responsiveness in all viewports
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem($color-black, .4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all .2s;
+    // SUPER COOL. This gives us the padding between the outline when we hover over the photos
+    // Note. We can only use this because we're using outline. If I did border like
+    // I normally do, you couldn't do this. VVVVV COOOOOOL
+    outline-offset: 2rem;
+
+  &--p1 {
+      left: 0;
+      top: -2rem;
+  }
+
+  &--p2 {
+    right: 0;
+    top: 2rem;
+}
+
+  &--p3 {
+    left: 20%;
+    top: 10rem;
+}
+
+  &:hover {
+    // VERYYY COOOOL. Like setting a border, but way easier
+    outline: 1.5rem solid $color-primary;
+    // scale it up a bit and move it up a bit
+    // remember you need to add the transition on the photo for this to work
+    transform: scale(1.05) translateY(-.5rem);
+    // cast a bigger shadow
+    box-shadow: 0 2.5rem 4rem($color-black, .5);
+    // VCOOL. When you hover over a photo, it automatically goes to the top because 20
+    // is higher than the default z-index
+    z-index: 20;
+  }
+}
+// SUPER FUCKING COOL
+// pretty complex but this is saying...when you hover over the composition div, select the photos
+// that are not being hovered and reduce them to 95% of their size
+&:hover &_photo:not(:hover) {
+    transform: scale(.95);
+
+}
+  }

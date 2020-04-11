@@ -1,0 +1,730 @@
+/* Can name it whatever. Similar to functions */
+@keyframes moveInLeft {
+  0% {
+    /* 0% refers to before the animation starts */
+    /* opacity is 0 to start because you want it to be invisible */
+    opacity: 0;
+    /* aka... it will start to the left on the X axis by 100px */
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    /* 100% refers to when the animation ends */
+    opacity: 1;
+    /* 0 because we want it to look like the way it does right now */
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    /* 0% refers to before the animation starts */
+    /* opacity is 0 to start because you want it to be invisible */
+    opacity: 0;
+    /* aka... it will start to the left on the X axis by 100px */
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    /* 100% refers to when the animation ends */
+    opacity: 1;
+    /* 0 because we want it to look like the way it does right now */
+    transform: translate(0); } }
+
+/* VCool. You can apply these animations when hover over an element.
+This is the correct syntax for that..... just need to add a :hover
+.logo:hover {
+  animation: moveInRight 1s ease-out;
+} */
+@keyframes moveInBottom {
+  0% {
+    /* 0% refers to before the animation starts */
+    /* opacity is 0 to start because you want it to be invisible */
+    opacity: 0;
+    /* aka... it will start to the left on the X axis by 100px */
+    transform: translateY(3rem); }
+  100% {
+    /* 100% refers to when the animation ends */
+    opacity: 1;
+    /* 0 because we want it to look like the way it does right now */
+    transform: translate(0); } }
+
+/* This is the universal selector. It selects every element on the page */
+*,
+*::after,
+*::before {
+  /* this means the borders are no longer accounted for when adding the height and width */
+  box-sizing: border-box;
+  /* border: 1px solid blue; */
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 10px; }
+
+body {
+  color: #777;
+  /* everything related to font is put in the body. NOT the universal selector */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  /* 1.7 times bigger than the standard line-height */
+  line-height: 1.7;
+  /* PCOOL....This gives the entire website a white padding / border  */
+  padding: 3rem; }
+
+/* VCOOL. The h1 on the first page of a website is very important for SEO. V Important to put name of business there */
+.heading-primary {
+  /* border: 1px white solid; */
+  color: #fff;
+  margin-bottom: 6rem;
+  text-transform: uppercase; }
+  .heading-primary--main {
+    /* // block elements create line breaks between individuals elements, aka they stack on top of eachother like blocks */
+    display: block;
+    font-size: 6rem;
+    /* // determines boldness */
+    font-weight: 400;
+    /* // as you can guess....determines space...between....letters */
+    letter-spacing: 3.5rem;
+    /* VCOOL + SUPER IMPORTANT
+    you need to tell what elements you want to apply the animations to */
+    animation-name: moveInLeft;
+    animation-duration: 5s;
+    /* The animation starts faster and ends slower */
+    animation-timing-function: ease-out;
+    /* OTHER ANIMATION OPTIONS
+    how long to wait until the animation kicks in
+    animation-delay: 3s;
+
+    // how many times you want the animation to occur
+    animation-iteration-count: 3;
+    */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    /* // determines boldness */
+    font-weight: 700;
+    /* // as you can guess....determines space...between....letters */
+    letter-spacing: 1.74rem;
+    /* VCool.  You can shorten the animation property like so...and CSS will figure it out.
+    NEED TO USE ANIMATION property. Not animation-name*/
+    animation: moveInRight 5s ease-out;
+    /* animation-duration: 5s;
+    /The animation starts faster and ends slower
+    animation-timing-function: ease-out; */
+    /* PCool. This fixes elements if they look shaky with animation.... No one knows why  */
+    backface-visibility: hidden; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center !important; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important; }
+
+.bg-video {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .15;
+  overflow: hidden; }
+  .bg-video_content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+
+.btn {
+  /* These are different states of a button. The unclicked link and the clicked */
+  /* this moves the button up  when you click it */ }
+  .btn, .btn:link, .btn:visited {
+    /* VCOOL this shapes the button and makes it round. Makes a HUGE difference. 100px or 200 or 500 doesn't matter */
+    border-radius: 10rem;
+    /* b/c this is inline-block, it's considered a text property, so putting text-align: center; in the div will center it */
+    display: inline-block;
+    padding: 1.5rem 4rem;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    /* this gets rid of the underline below a link */
+    text-decoration: none;
+    /* transition needs to be on the initial state
+    That little period is IMPORTANT. .2s. NOT 2s
+     */
+    transition: all .2s;
+    position: relative;
+    border: none;
+    cursor: pointer; }
+  .btn:hover {
+    /* this gives it a vertical shadow....the coordinates are (x, y, blur, and color)
+    This gives kind of a subtle shadow
+    */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* this moves the button up 3px when you hover */
+    transform: translateY(-3px);
+    /* AFTER we hover over the button */ }
+    .btn:hover::after {
+      /* scale(2), for example, means the element will double in size */
+      /* since we want it to be animated, we have to put a transition property on its initial state, the btn::after pseudo prop */
+      transform: scaleX(1.4) scaleY(1.6);
+      /* This is the trick for fading something out */
+      opacity: 0; }
+  .btn:active, .btn:focus {
+    outline: none;
+    transform: translateY(1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn--green {
+    background-color: #55c57a;
+    color: #fff; }
+    .btn--green::after {
+      background-color: #55c57a; }
+  .btn::after {
+    content: '';
+    display: inline-block;
+    /* 100% of the width/ height of the button */
+    height: 100%;
+    width: 100%;
+    /* Rounds the edges */
+    border-radius: 10rem;
+    /* How to put it behind the button with absolute positioning
+      - Absolute positioning needs to have a reference.  It finds the nearest element with relative positioning to be its reference
+      - So you put position: relative inside button CSS........And then this is directly behind the button
+      */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The Z-Index determines the position of an element IF they're one on top of OR overlapping eachother
+      -Overlapping elements with a larger z-index cover those with a smaller one
+       */
+    z-index: -1;
+    transition: all .4s; }
+  .btn--white::after {
+    background-color: #fff; }
+  .btn--animated {
+    /* In order, those are: the animation name, the animation duration, the animation style, and the animation delay */
+    animation: moveInBottom 5s ease-out .75;
+    /* VCool. This will apply the styles of the 0% BEFORE the animation starts */
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 2px solid #55c57a;
+  padding: 5px;
+  transition: all .2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: white;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  transform: translateY(0); }
+
+.cards {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem; }
+  .cards_side {
+    background-color: orangered;
+    height: 52rem;
+    text-align: center;
+    transition: all .8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 2rem 4rem #000, 0.15; }
+    .cards_side--front {
+      background-color: #fff; }
+    .cards_side--back {
+      transform: rotateY(-180deg); }
+      .cards_side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+      .cards_side--back-2 {
+        background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+      .cards_side--back-3 {
+        background-image: linear-gradient(to right bottom, #2998ff, #5643fa); }
+  .cards:hover .cards_side--front {
+    transform: rotateY(180deg); }
+  .cards:hover .cards_side--back {
+    transform: rotateY(0); }
+  .cards_picture {
+    background-size: cover;
+    height: 23rem;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    background-blend-mode: screen; }
+    .cards_picture--1 {
+      background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url(../img/nat-5.jpg); }
+    .cards_picture--2 {
+      background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(../img/nat-6.jpg); }
+    .cards_picture--3 {
+      background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url(../img/nat-7.jpg); }
+  .cards_heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-align: right;
+    text-transform: uppercase;
+    color: #fff;
+    width: 75%;
+    position: absolute;
+    top: 20%;
+    right: 5%; }
+  .cards_heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; }
+    .cards_heading-span--1 {
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
+    .cards_heading-span--2 {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
+    .cards_heading-span--3 {
+      background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
+  .cards_details {
+    padding: 3rem; }
+    .cards_details ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; }
+      .cards_details ul li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .cards_details ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
+  .cards_cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%; }
+  .cards_price-box {
+    text-align: center;
+    margin-bottom: 8rem;
+    color: #fff; }
+  .cards_price-only {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 600; }
+  .cards_price-value {
+    font-size: 6rem;
+    font-weight: 100; }
+
+.composition {
+  position: relative; }
+  .composition_photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem #000, 0.4;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all .2s;
+    outline-offset: 2rem; }
+    .composition_photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition_photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition_photo--p3 {
+      left: 20%;
+      top: 10rem; }
+    .composition_photo:hover {
+      outline: 1.5rem solid #55c57a;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem #000, 0.5;
+      z-index: 20; }
+  .composition:hover .composition_photo:not(:hover) {
+    transform: scale(0.95); }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform .3s; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+  .feature-box_icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent; }
+
+.form {
+  transition: all .5; }
+  .form_group:not(:last-child) {
+    margin-bottom: 3rem; }
+  .form_input {
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 1.5rem 2rem;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block;
+    transition: all .3s; }
+    .form_input:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem #000, 0.15;
+      border-bottom: 3px solid #55c57a; }
+    .form_input:focus:invalid {
+      border-bottom: 3px solid orangered; }
+    .form_input::-webkit-input-placeholder {
+      color: #999; }
+  .form_label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    display: block;
+    transition: all .3s; }
+  .form_input:placeholder-shown + .form_label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem); }
+  .form_radio-group {
+    width: 49%;
+    display: inline-block; }
+  .form_radio-label {
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding-left: 5rem;
+    position: relative; }
+  .form_radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid #55c57a;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -.4rem; }
+    .form_radio-button::after {
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #55c57a;
+      opacity: 0;
+      transition: opacity .2s; }
+  .form_radio-input:checked ~ .form_radio-label .form_radio-button::after {
+    opacity: 1; }
+  .form_radio-input {
+    display: none; }
+
+.story {
+  width: 75%;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  transform: skewX(-12deg); }
+  .story_shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative; }
+  .story_image {
+    height: 100%;
+    transform: translateX(-3.2rem) scale(1.4);
+    transition: all .5s; }
+  .story_text {
+    transform: skewX(12deg); }
+  .story_caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    color: white;
+    text-align: center;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: all .5s;
+    backface-visibility: hidden; }
+  .story:hover .story_caption {
+    opacity: 1;
+    transform: translate(-50%, -50%); }
+  .story:hover .story_image {
+    transform: translateX(-3.2rem) scale(1);
+    filter: blur(3px) brightness(80%); }
+
+.footer {
+  background-color: #333;
+  padding: 10rem 0;
+  font-size: 1.4rem;
+  color: #f7f7f7; }
+  .footer_logo-box {
+    text-align: center;
+    margin-bottom: 8rem; }
+  .footer_logo {
+    width: 15rem;
+    height: auto; }
+  .footer_navigation {
+    border-top: 1px solid #f7f7f7;
+    padding-top: 2rem;
+    display: inline-block; }
+  .footer_list {
+    list-style: none; }
+  .footer_item {
+    display: inline-block; }
+    .footer_item:not(:last-child) {
+      padding-right: 1.5rem; }
+  .footer_link:link, .footer_link:visited {
+    background-color: #333;
+    color: #f7f7f7;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all .2s; }
+  .footer_link:active, .footer_link:hover {
+    color: #55c57a;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg) scale(1.3); }
+  .footer_copyright {
+    text-align: center;
+    border-top: 1px solid #f7f7f7;
+    padding-top: 2rem;
+    color: inherit;
+    border-top: 1px solid #f7f7f7;
+    float: right; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 6rem * 2) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 6rem * 2) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 6rem * 3) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 6rem * 3) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 6rem * 3) / 4) + 6rem * 2); }
+
+.header {
+  /* VERY COOL. A lot going on.  Break it down one by one
+  Gradient goes befor the image b/c it's on top. Use comma to separate
+  -To right bottom....tells it how to "flow".  From left to right + top to bottom
+  -The first color is what it starts with, the 2nd is what to end with....you can add more colors
+  -To make it see through, add opacity by right clicking + opening Google Chrome Color Picker, make changes, and HIT ENTER
+   */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  /* cover tries to....cover...the width of the viewport with the image */
+  background-size: cover;
+  background-position: top;
+  /* specifies area you want to clip out of the element
+  -Need to specify the location of the 4 corners
+  -First number is X axis, which is left to right
+  -Second number is Y axis, which is top to bottom
+  ...... so starting from the top left '0 0', means the top left corner
+  .... the right corner = '100% 0' because the corner is 100% to the right of the first corner + unchanged on Y axis
+  VERY COOL...this website gives you the coordinates for whatever shape you want to make(https://bennettfeely.com/clippy/)
+   */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* default coordinates(x y, x y, x y).... top left, top right, bottom right, bottom left */
+  /* the header takes up 95% of the viewport, aka the screen */
+  /* NEED TO REMEMBER TO GIVE ELEMENTS HEIGHTS. Borders help visualize  */
+  height: 95vh;
+  position: relative;
+  /* This is the div containing the Biz name, tagline, and Explore button */ }
+  .header_logo-box {
+    /* border: 1px blue solid; */
+    /* once you use absolutely positioning, you can then use top right left to put it exactly where you want it to be */
+    position: absolute;
+    /* Need to set its parent element, ie header, to relative to give it a point of reference
+    --> this sets the logo-box 40px from top of the header and 40px from the left
+    */
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    /* // if you set the height, the browser will automatically set the width accordingly.... or vice versa */
+    height: 4.5rem; }
+  .header__text-box {
+    position: absolute;
+    /* // top and left by themselves will put the FIRST part of the element exactly 50% away from the parent element, but it's still off */
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    /* // WHOAAAA...this shifts the element 50% to the left on the x axis AND 50% UP on the y axis....which PERFECTLY CENTERS IT */
+    transform: translate(-50%, -50%); }
+
+.navigation_checkbox {
+  display: none; }
+
+.navigation_button {
+  background-color: #fff;
+  height: 7rem;
+  width: 7rem;
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+  border-radius: 50%;
+  z-index: 2000; }
+
+.navigation_background {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  background-image: radial-gradient(#7ed56f, #28b485);
+  position: fixed;
+  top: 6.5rem;
+  right: 6.5rem;
+  z-index: 1000;
+  transform: scale(80); }
+
+.navigation_nav {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1500; }
+
+.navigation_list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center; }
+
+.navigation_item {
+  margin: 1rem; }
+
+.navigation_link:link, .navigation_link:visited {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+  background-size: 230%;
+  transition: all .4s; }
+  .navigation_link:link span, .navigation_link:visited span {
+    margin-right: 1rem;
+    display: inline-block; }
+
+.navigation_link:hover, .navigation_link:active {
+  background-position: 100%;
+  color: #55c57a;
+  transform: translateX(1rem); }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh;
+  z-index: 1; }
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/nat-4.jpg");
+  background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -10.7rem; }
+  .section-features > * {
+    transform: skewY(7deg); }
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 20rem 0 15rem 0;
+  margin-top: -12rem; }
+
+.section-stories {
+  padding: 15rem 0;
+  position: relative; }
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+
+.book {
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../img/nat-10.jpg);
+  background-size: 100%;
+  height: 50rem;
+  border-radius: 1rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2); }
+  .book_form {
+    width: 50%;
+    padding: 6rem; }

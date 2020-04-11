@@ -1,0 +1,71 @@
+.row {
+  // first off, need to define a width
+  // one of the standard grid width is 1140px, need  to change to rem
+  // max width will make it responsive when for smalller screens
+  max-width: $grid-width;
+  // background-color: #eee;
+  // the trick to center block elements within block elements
+  // vertical margin is 0.
+  // auto tells browser to automatically center the left and right margins
+  margin: 0 auto;
+
+//VCOOL
+// trying to get rid of the margin after the last row because it's unnecessary
+// this selects everything EXCEPT the last child and gives it a margin bottom...sneaky, sneaky
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+  }
+
+  @include clearfix;
+
+// VCOOL
+// so that we don't have to add the same code to every row, we create an attribute
+// this means that any elements that has a class that starts with "col-", will have what's in the brackets
+  [class^="col-"] {
+    // background-color: orange;
+    // float left gets rid of the block layout of the columns, but it also causes the
+    // el to collapse, so you have to clearfix it
+    float: left;
+
+  // every col, except the last one has a margin-right for spacing
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+    }
+  }
+// [class*="col-"].... this would mean any class that CONTAINS col
+
+
+  .col-1-of-2 {
+    // -need to use the calc function
+    // need to use 100%...because its 100% of the current screen. Not a hard #
+    // you need the #{} to use a Sass variable
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+
+  }
+
+  .col-1-of-3 {
+    width: calc((100% - #{$gutter-horizontal} * 2) / 3);
+
+  }
+
+  .col-2-of-3 {
+    width: calc(2 * ((100% - #{$gutter-horizontal} * 2) / 3) + #{$gutter-horizontal});
+
+  }
+
+  .col-1-of-4 {
+    width: calc((100% - #{$gutter-horizontal} * 3) / 4);
+
+  }
+
+  .col-2-of-4 {
+    width: calc(2 * ((100% - #{$gutter-horizontal} * 3) / 4) + #{$gutter-horizontal});
+
+  }
+
+  .col-3-of-4 {
+    width: calc(3 * ((100% - #{$gutter-horizontal} * 3) / 4) + #{$gutter-horizontal} * 2);
+
+  }
+
+}

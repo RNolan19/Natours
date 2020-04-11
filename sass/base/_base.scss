@@ -1,0 +1,27 @@
+/* This is the universal selector. It selects every element on the page */
+*,
+*::after,
+*::before {
+  /* this means the borders are no longer accounted for when adding the height and width */
+  box-sizing: border-box;
+  /* border: 1px solid blue; */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  color: #777;
+  /* everything related to font is put in the body. NOT the universal selector */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  /* 1.7 times bigger than the standard line-height */
+  line-height: 1.7;
+  /* PCOOL....This gives the entire website a white padding / border  */
+  padding: 3rem;
+
+}

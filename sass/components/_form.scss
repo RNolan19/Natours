@@ -1,0 +1,132 @@
+.form {
+  transition: all .5;
+
+//VImp. The old not last-child trick. Memorize this
+  &_group {
+
+    &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+  }
+
+  &_input {
+    font-size: 1.5rem;
+    // sneaky sneaky. Inherits the default font. Inputs don't inherit font properties
+    font-family: inherit;
+    color: inherit;
+    // this is what provides the height
+    padding: 1.5rem 2rem;
+    border-radius: 3px;
+    background-color: rgba($color-white, .5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    // this makes it take up 100% of the space available
+    width: 90%;
+    display: block;
+    transition: all .3s;
+
+    // gets rid of the blue link-style border when you click on input.
+      &:focus {
+        outline: none;
+        box-shadow: 0 1rem 2rem($color-black, .15);
+        //VCOOL. This gives it a green underline when you click on the box
+        border-bottom: 3px solid $color-primary;
+      }
+
+      // when what you entered into the form is invalid
+        &:focus:invalid {
+          border-bottom: 3px solid orangered;
+        }
+
+      // :: this syntax is for psudo elements
+      &::-webkit-input-placeholder {
+        color: $color-grey-dark-2;
+      }
+  }
+
+
+
+
+  &_label {
+    // opacity: 0;
+    // transform: translateY(-3px);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    display: block;
+    transition: all .3s;
+  }
+//VCOOOOOOOOOOL
+// + means adjacent sibling
+// ~ would mean ANY sibling
+// when the placeholder is shown... the label drifts up and is hidden
+// when we start typing it drops down...DOPEEEEEEEE
+  &_input:placeholder-shown + &_label {
+    //be hidden
+    opacity: 0;
+    // actually removes it from page temporarily
+    visibility: hidden;
+    // when the placeholder is showing
+    transform: translateY(-4rem);
+  }
+
+  &_radio-group {
+    // put the buttons side by side. Easier than floating
+    width: 49%;
+    display: inline-block;
+  }
+
+  &_radio-label {
+    font-size: 1.6rem;
+    // makes the mouse look like a hand
+    cursor: pointer;
+    padding-left: 5rem;
+    position: relative;
+  }
+
+// creating the bigger green circle
+  &_radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    // this makes it a circle.  Would be a square otherwise
+    border-radius: 50%;
+    // need to make it a block element to style like this
+    display: inline-block;
+
+    position: absolute;
+    left: 0;
+    top: -.4rem;
+
+// creating the inner circle with a pseudo element.....?
+    &::after {
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      content: "";
+      display: block;
+// need this to be in the center of the bigger circle. Use the olddd trick
+// did not realize the parent doesn't have to be relative. Just needs a positioning
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+  }
+
+// if we hit the radio input text, we can essentially mark it as checked AND THEN
+// tell the after button to appear by changing its opacity
+&_radio-input:checked ~ &_radio-label &_radio-button::after  {
+  opacity: 1;
+}
+
+// hide the default radio "checkboxes"
+&_radio-input {
+  display: none;
+}
+
+}

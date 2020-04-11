@@ -1,0 +1,142 @@
+.btn {
+  /* These are different states of a button. The unclicked link and the clicked */
+  &,
+  &:link,
+  &:visited {
+    /* VCOOL this shapes the button and makes it round. Makes a HUGE difference. 100px or 200 or 500 doesn't matter */
+    border-radius: 10rem;
+    /* b/c this is inline-block, it's considered a text property, so putting text-align: center; in the div will center it */
+    display: inline-block;
+    padding: 1.5rem 4rem;
+    font-size: $default-font-size;
+
+    text-transform: uppercase;
+    /* this gets rid of the underline below a link */
+    text-decoration: none;
+    /* transition needs to be on the initial state
+    That little period is IMPORTANT. .2s. NOT 2s
+     */
+    transition: all .2s;
+
+    position: relative;
+
+    // Change for the button element on inout form
+    border: none;
+    cursor: pointer;
+
+  }
+
+
+
+  &:hover {
+    /* this gives it a vertical shadow....the coordinates are (x, y, blur, and color)
+    This gives kind of a subtle shadow
+    */
+    box-shadow: 0 1rem 2rem rgba($color-black,.2);
+    /* this moves the button up 3px when you hover */
+    transform: translateY(-3px);
+
+
+        /* AFTER we hover over the button */
+      &::after {
+          /* scale(2), for example, means the element will double in size */
+          /* since we want it to be animated, we have to put a transition property on its initial state, the btn::after pseudo prop */
+        transform: scaleX(1.4) scaleY(1.6);
+          /* This is the trick for fading something out */
+        opacity: 0;
+      }
+  }
+
+  /* this moves the button up  when you click it */
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+
+
+  }
+
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    /* 100% of the width/ height of the button */
+    height: 100%;
+    width: 100%;
+      /* Rounds the edges */
+    border-radius: 10rem;
+      /* How to put it behind the button with absolute positioning
+      - Absolute positioning needs to have a reference.  It finds the nearest element with relative positioning to be its reference
+      - So you put position: relative inside button CSS........And then this is directly behind the button
+      */
+    position: absolute;
+    top: 0;
+    left: 0;
+      /* The Z-Index determines the position of an element IF they're one on top of OR overlapping eachother
+      -Overlapping elements with a larger z-index cover those with a smaller one
+       */
+      z-index: -1;
+
+      transition: all .4s;
+  }
+
+  &--white::after {
+    background-color: $color-white;
+  }
+
+
+  &--animated {
+        /* In order, those are: the animation name, the animation duration, the animation style, and the animation delay */
+      animation: moveInBottom 5s ease-out .75;
+        /* VCool. This will apply the styles of the 0% BEFORE the animation starts */
+      animation-fill-mode: backwards;
+  }
+
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    // display inline-block, so we can use block properties like padding, margin, etc
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 2px solid $color-primary;
+    padding: 5px;
+    transition: all .2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.5);
+    // VImp. this only works if you put the transition above
+    transform: translateY(-2px);
+
+
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, 0.5);
+    transform: translateY(0);
+  }
+}

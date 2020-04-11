@@ -1,0 +1,60 @@
+.header {
+  /* VERY COOL. A lot going on.  Break it down one by one
+  Gradient goes befor the image b/c it's on top. Use comma to separate
+  -To right bottom....tells it how to "flow".  From left to right + top to bottom
+  -The first color is what it starts with, the 2nd is what to end with....you can add more colors
+  -To make it see through, add opacity by right clicking + opening Google Chrome Color Picker, make changes, and HIT ENTER
+   */
+  background-image: linear-gradient(to right bottom,
+    rgba(126, 213, 111, 0.80),
+    rgba(40, 180, 133, 0.80)),
+    url('../img/hero.jpg');
+  /* cover tries to....cover...the width of the viewport with the image */
+  background-size: cover;
+  background-position: top;
+  /* specifies area you want to clip out of the element
+  -Need to specify the location of the 4 corners
+  -First number is X axis, which is left to right
+  -Second number is Y axis, which is top to bottom
+  ...... so starting from the top left '0 0', means the top left corner
+  .... the right corner = '100% 0' because the corner is 100% to the right of the first corner + unchanged on Y axis
+  VERY COOL...this website gives you the coordinates for whatever shape you want to make(https://bennettfeely.com/clippy/)
+   */
+
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); // this is so it will work in all types of browsers. Chrome, Firefox, etc
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* default coordinates(x y, x y, x y).... top left, top right, bottom right, bottom left */
+
+  /* the header takes up 95% of the viewport, aka the screen */
+  /* NEED TO REMEMBER TO GIVE ELEMENTS HEIGHTS. Borders help visualize  */
+  height: 95vh;
+  position: relative;
+
+  &_logo-box {
+    /* border: 1px blue solid; */
+    /* once you use absolutely positioning, you can then use top right left to put it exactly where you want it to be */
+    position: absolute;
+    /* Need to set its parent element, ie header, to relative to give it a point of reference
+    --> this sets the logo-box 40px from top of the header and 40px from the left
+    */
+
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    /* // if you set the height, the browser will automatically set the width accordingly.... or vice versa */
+    height: 4.5rem;
+  }
+
+  /* This is the div containing the Biz name, tagline, and Explore button */
+  &__text-box {
+    position: absolute;
+    /* // top and left by themselves will put the FIRST part of the element exactly 50% away from the parent element, but it's still off */
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    /* // WHOAAAA...this shifts the element 50% to the left on the x axis AND 50% UP on the y axis....which PERFECTLY CENTERS IT */
+    transform: translate(-50%, -50%);
+  }
+}

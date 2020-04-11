@@ -1,0 +1,91 @@
+/* VCOOL. The h1 on the first page of a website is very important for SEO. V Important to put name of business there */
+.heading-primary {
+  /* border: 1px white solid; */
+  color: $color-white;
+  margin-bottom: 6rem;
+  text-transform: uppercase;
+
+  &--main {
+    /* // block elements create line breaks between individuals elements, aka they stack on top of eachother like blocks */
+    display: block;
+    font-size: 6rem;
+    /* // determines boldness */
+    font-weight: 400;
+    /* // as you can guess....determines space...between....letters */
+    letter-spacing: 3.5rem;
+
+
+    /* VCOOL + SUPER IMPORTANT
+    you need to tell what elements you want to apply the animations to */
+    animation-name: moveInLeft;
+    animation-duration: 5s;
+    /* The animation starts faster and ends slower */
+    animation-timing-function: ease-out;
+
+    /* OTHER ANIMATION OPTIONS
+    how long to wait until the animation kicks in
+    animation-delay: 3s;
+
+    // how many times you want the animation to occur
+    animation-iteration-count: 3;
+    */
+  }
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    /* // determines boldness */
+    font-weight: 700;
+    /* // as you can guess....determines space...between....letters */
+    letter-spacing: 1.74rem;
+
+    /* VCool.  You can shorten the animation property like so...and CSS will figure it out.
+    NEED TO USE ANIMATION property. Not animation-name*/
+    animation: moveInRight 5s ease-out;
+    /* animation-duration: 5s;
+    /The animation starts faster and ends slower
+    animation-timing-function: ease-out; */
+
+    /* PCool. This fixes elements if they look shaky with animation.... No one knows why  */
+    backface-visibility: hidden;
+  }
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  //VCOOL. Because this is an inline block, we created a div around the h1, just to center it.
+  // All you had to do was tell that div to text-align: center, b/c its inline block, it is treated as text
+  display: inline-block;
+  // this just gives the h1 element a background gradient. occupies width + height of h1
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  // VCOOL. This clips the background so it's ONLY behind the text
+  -webkit-background-clip: text;
+  // then by making the text color transparent, it just shows the background gradient
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .2s;
+
+  &:hover {
+    // PCool. Skew tilts it X degrees one way or the other
+    // scale will blow it up 110%
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    // this gives a little shadow when you hover... x, y, blur, color and opacity
+    text-shadow: .5rem 1rem 2rem rgba($color-black,0.2)
+  }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+// every paragraph but the last one will have a margin of px
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+
+}

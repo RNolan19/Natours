@@ -1,0 +1,29 @@
+.feature-box {
+  background-color: rgba($color-white, .8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+  transition: transform .3s;
+
+
+
+
+// when we hover the feature-box
+  &:hover {
+    transform: translateY(-1.5rem) scale(1.03);
+  }
+
+  // you basically style this the same way you would for a font
+  &_icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    // VCOOL. This clips the background so it's ONLY behind the text
+    -webkit-background-clip: text;
+    // then by making the text color transparent, it just shows the background gradient
+    color: transparent;
+  }
+}

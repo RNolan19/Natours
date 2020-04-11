@@ -1,0 +1,24 @@
+// VCOOOOOOL. Setting a video as a background
+.bg-video {
+  // need to set the parent, the section-stories element to pos: relative
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  // 100% of the parent's width
+  height: 100%;
+  width: 100%;
+  // Use Z-index to put it behind all elments. Also get rid of the original bg image.
+  // And Boom goes the dynamite, it takes over as the background!!
+  z-index: -1;
+  // make it less pronounced / visible. More background than in your face
+  opacity: .15;
+  overflow: hidden;
+
+  &_content {
+    height: 100%;
+    width: 100%;
+    // V-IMPORTANT. This fits the ENTIRE VIDEO to its parent element
+    // similar to background-size: cover for images, where it tries to cover entire El w/ the image
+    object-fit: cover;
+  }
+}

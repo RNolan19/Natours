@@ -1,0 +1,204 @@
+.cards {
+  // this determines how it looks when the card flips
+  // just give it a high value. The lower the value, the more dramatic/ weird effect you get
+  perspective: 150rem;
+  // this make it work in Mozilla Firefox too
+  -moz-perspective: 150rem;
+  // always have to give the parent a relative position
+  position: relative;
+  //VImportant. Make sure to give the card a height as well, not just the cards_side
+  // otherwise it will collapse, which makes the flipping look glitchy
+  height: 52rem;
+
+// this is the front of the card
+  &_side {
+    background-color: orangered;
+
+    height: 52rem;
+    text-align: center;
+    // Need this for transform to occur.
+    // Ease makes transition smoother
+    // .8s is how long it will take to flip... You could set it to 10 seconds for super slow
+    transition: all .8s ease;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    // take up 100% of the predefined width for col-1-of-3
+    width: 100%;
+    // if you set it to hidden, it hides the back part of an element
+    backface-visibility: hidden;
+
+    // to slightly round the edges
+    border-radius: 3px;
+    // this prevents the image within the card from overiding the border-radius
+    overflow: hidden;
+    // this is kinda the default box-shadow. Could make a variable. shadow-light, shadow-dark
+    box-shadow: 0 2rem 4rem($color-black, .15);
+
+  &--front {
+    background-color: $color-white;
+  }
+
+  &--back {
+    // background-color: green;
+    // the back side starts off rotated 180 degrees, so when it flips, it looks normal
+    // - 180 just makes it flip towards the right
+    transform: rotateY(-180deg);
+
+// how to give each card a cool gradient on the back side
+// make sure to use background-image. NOT background-color
+    &-1 {
+      background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+
+
+    }
+
+    &-2 {
+      background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+    }
+
+    &-3 {
+      background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+    }
+  }
+  }
+
+// when you hover the front side, it will go rotate 180 degrees, so it's flipped
+  &:hover &_side--front {
+    // VCOOL. this is how you flip the card when you hover over it
+    // make sure it's rotateY. Not X
+    transform: rotateY(180deg);
+  }
+// when you hover the back side, it goes back to 0
+  &:hover &_side--back {
+    // VCOOL. this is how you flip the card when you hover over it
+    // make sure it's rotateY. Not X
+    transform: rotateY(0);
+  }
+
+// Front side styling
+  &_picture {
+      background-size: cover;
+      height: 23rem;
+
+      //we want to clip the image within the card, like we did for the header
+      // quick note. you CAN do other shapes, circle, etc. We'll get to that
+      // for the polygon you just give the X + Y coords for top left, top right, bottom right, bottom left
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+      // this is so it works in all different browsers...firefox, chrome, etc. May be outdated?
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+      //VVVCooooollllll
+      background-blend-mode: screen;
+// you give each individual card 2 backgrounds, a linear gradient and an image
+// AND THEN you blend them with background-blend-mode
+// you can experiment with a ton of different blend modes in the inspector
+    &--1{
+      background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),
+      url(../img/nat-5.jpg)
+    }
+
+    &--2{
+      background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark),
+      url(../img/nat-6.jpg)
+    }
+
+    &--3{
+      background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark),
+      url(../img/nat-7.jpg);
+    }
+  }
+
+  &_heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-align: right;
+    text-transform: uppercase;
+    color: $color-white;
+    width: 75%;
+
+    position: absolute;
+    top: 20%;
+    right: 5%;
+  }
+
+// this is a separate element so it's not included in heading
+// we are creating this so we can give the text a background so you can read the white text
+  &_heading-span {
+    padding: 1rem 1.5rem;
+    // VCOOL. So even though the span element is 2 lines, this treats each line as if they were individual els
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+// normally, you wouldn't use RGBA here, but we do because we want some opacity
+    &--1 {
+      background-image: linear-gradient(to right bottom,
+      rgba($color-secondary-light, .85),
+      rgba($color-secondary-dark, .85));
+    }
+
+    &--2 {
+      background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+    }
+
+    &--3 {
+      background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+    }
+  }
+
+  &_details {
+          padding: 3rem;
+    ul {
+          list-style: none;
+          //we don't want the margin-bottom going all the way across the card
+          width: 80%;
+          // this centers everything horizontally
+          margin: 0 auto;
+
+
+      li {
+          text-align: center;
+          font-size: 1.5rem;
+          padding: 1rem;
+          // every LI EXCEPT the last one/ child will have a slight grey underline
+          &:not(:last-child) {
+            border-bottom: 1px solid $color-grey-light-2;
+          }
+      }
+    }
+  }
+
+  &_cta {
+    // VIMPORTANT. The olddd centering trick
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // the fist value is left to right, 2nd value is top to bottom
+    transform: translate(-50%, -50%);
+
+  // this centers the button
+    text-align: center;
+    // this allows the button to be wide enough for the text to be on one line
+    width: 90%;
+  }
+
+  &_price-box {
+    text-align: center;
+    margin-bottom: 8rem;
+    color: $color-white;
+
+  }
+
+  &_price-only {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  &_price-value {
+    // in general, if the text is going to be huge, make the it thin, as well
+    font-size: 6rem;
+    font-weight: 100;
+  }
+}

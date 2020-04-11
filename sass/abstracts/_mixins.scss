@@ -1,0 +1,9 @@
+// clearix basically creates an empty pseudo element, you need to display it, then
+// you clear both floats
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

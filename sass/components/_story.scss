@@ -1,0 +1,99 @@
+.story {
+  width: 75%;
+  // if you have a block element within a block element, margin 0 auto will center the el
+  // otherwise you may have to use absolute positioning with the transform translate trick
+  margin: 0 auto;
+  // text-align: right;
+  font-size: $default-font-size;
+  box-shadow: 0 3rem 6rem rgba($color-black, .15);
+  // VCOOL. Creates a white background with some opacity. ALMOST see through
+  background-color: rgba($color-white, .6);
+  // slightly rounds the edges
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  // this tilts the white background a litle
+  transform: skewX(-12deg);
+
+
+  // since this tilts everything, the text and picture included, you could normally reverse the effects
+  // by selecting all the elements children and "unskewing it"
+  // & > * {
+  //   transform: skewX(12deg);
+  // BUT that doesn't work because you already are using a transform on the shape, so have to just add it
+  // individually to the shape and text classes below
+
+
+  &_shape {
+    width: 15rem;
+    height: 15rem;
+
+    // PCOOL. by floating it, instead of having the circle be a block element, it floats to the left
+    // and all the text goes to the right side of it
+    float: left;
+    //VCOOOOOOL. Creating a circle.
+    // For it to work the element must be floated and have a defined width and height
+    // first number is the radius. 50% would be half the height and width of the circle, aka 7.5 rem
+    // at 50% 50% means AT THE CENTER HORIZONTALLY AND VERTICALLY
+    shape-outside: circle(50% at 50% 50% );
+    // need this for Safari
+    -webkit-shape-outside: circle(50% at 50% 50% );
+
+    // This actually clips / creates the circle
+    -webkit-clip-path: circle(50% at 50% 50% );
+    clip-path: circle(50% at 50% 50% );
+    //want to create some space between the circle and text. Better off not touch padding or margin. Use transform
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+
+  }
+
+  &_image {
+    // telling it to take up 100% of the shape, so 15rem
+    height: 100%;
+    // pulling the image to the left to center it
+    transform: translateX(-3.2rem) scale(1.4);
+    transition: all .5s;
+  }
+
+  &_text {
+
+    transform: skewX(12deg);
+  }
+
+  &_caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    color: white;
+    text-align: center;
+    // font-weight: 300;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    // VCOOL. Make it dissapear, until you hover
+    opacity: 0;
+    // enables the transform
+    transition: all .5s;
+    // prevents the shaking when you transform
+    backface-visibility: hidden;
+  }
+
+  // VCOOL.  How to tell a specific element to change when you hover
+  // This tells the caption text to appear when you hover + rise to the middle of the image
+   // change the caption's opacity, when you hover
+  &:hover &_caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+// when you hover over the story box section, change the image by....
+  &:hover &_image {
+    // zoom out and shrink it
+    transform: translateX(-3.2rem) scale(1);
+    // blur it and darken it slightly.... Set the brightness to 80% of normal
+    filter: blur(3px) brightness(80%);
+
+  }
+
+}
