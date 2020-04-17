@@ -201,4 +201,71 @@
     font-size: 6rem;
     font-weight: 100;
   }
+
+// VIMP. since we are making a lot of changes, it's easier to just copy the entire code and cut the stuff we don't need
+  @include respond(tab-port) {
+
+    height: auto; // CHANGE
+    // to slightly round the edges
+    border-radius: 3px;
+    background-color: white; // CHANGE to add background to empty space
+    box-shadow: 0 2rem 4rem rgba($color-black, .15);
+  // this is the front of the card
+    &_side {
+
+      height: auto; // CHANGE
+      text-align: center;
+      box-shadow: none;   // // CHANGE
+        border-radius: 3px;
+      position: relative; // CHANGE
+
+    &--back {
+      // background-color: green;
+      // the back side starts off rotated 180 degrees, so when it flips, it looks normal
+      // - 180 just makes it flip towards the right
+      transform: rotateY(0); // CHANGE to 0
+      clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+    }
+    }
+
+  // when you hover the front side, it will go rotate 180 degrees, so it's flipped
+    &:hover &_side--front {
+      // VCOOL. this is how you flip the card when you hover over it
+      // make sure it's rotateY. Not X
+      transform: rotateY(0deg); // CHANGE
+    }
+
+    &_details {
+      padding: 1rem 3rem;
+    }
+
+
+
+    &_cta {
+      // VIMPORTANT. The olddd centering trick
+      position: relative; // CHANGE
+      top: 0%; // CHANGE
+      left: 0%; // CHANGE
+      // the fist value is left to right, 2nd value is top to bottom
+      transform: translate(0); // CHANGE
+
+    // this centers the button
+      text-align: center;
+      // this allows the button to be wide enough for the text to be on one line
+      width: 100%; // CHANGE
+      padding: 7rem 4rem 4rem 4rem; // CHANGE
+    }
+
+    &_price-box {
+
+      margin-bottom: 3rem;
+
+    }
+
+    &_price-value {
+      // in general, if the text is going to be huge, make the it thin, as well
+      font-size: 6rem;
+      font-weight: 100;
+    }
+  }
 }

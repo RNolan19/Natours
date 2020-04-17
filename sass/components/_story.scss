@@ -15,6 +15,15 @@
   // this tilts the white background a litle
   transform: skewX(-12deg);
 
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0);
+  }
 
   // since this tilts everything, the text and picture included, you could normally reverse the effects
   // by selecting all the elements children and "unskewing it"
@@ -46,6 +55,10 @@
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
 
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+
   }
 
   &_image {
@@ -59,6 +72,10 @@
   &_text {
 
     transform: skewX(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
   }
 
   &_caption {

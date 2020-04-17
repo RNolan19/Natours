@@ -13,11 +13,14 @@
 
         <title>Natours | Exciting tours for adventurous people</title>
     </head>
+
     <body>
       <!-- NAV DROPDOWN STARTS HERE  -->
-      <!-- <div class="navigation">
+      <div class="navigation">
         <input type="checkbox" class="navigation_checkbox" id="navi-toggle">
-        <label for="navi-toggle" class="navigation_button">MENU</label>
+        <label for="navi-toggle" class="navigation_button">
+          <span class="navigation_icon">&nbsp;</span>
+        </label>
 
 
         <div class="navigation_background">&nbsp;</div>
@@ -30,12 +33,12 @@
             <li class="navigation_item"><a href="#" class="navigation_link"><span>05 -</span>Book Now!</a></li>
           </ul>
         </nav>
-      </div> -->
+      </div>
 
 
       <!-- HEADER SECTION STARTS HERE -->
         <header class="header">
-          <div class="header__logo-box">
+          <div class="header_logo-box">
             <img src='./img/logo-white.png' alt="logo" class="header__logo">
           </div>
           <!-- VCOOL. The h1 on the first page of a website is very important for SEO. V Important to put name of business there
@@ -47,7 +50,7 @@
               <span class="heading-primary--sub">is where life happens</span>
             </h1>
             <!-- Just starts as a link...interesting -->
-            <a href="#" class="btn btn--white btn--animated">Discover Our Tours</a>
+            <a href="#section-tours" class="btn btn--white btn--animated">Discover Our Tours</a>
           </div>
         </header>
 <!--Header, Main, Footer generally....
@@ -63,15 +66,16 @@ main tells search engines or screen readers that this is the main section of our
               </div>
 
               <div class="row">
+
                 <div class="col-1-of-2">
-                  <h3 class="heaing-tertiary  u-margin-bottom-small">
+                  <h3 class="heading-tertiary  u-margin-bottom-small">
                     You're going to fall in love with nature
                   </h3>
                   <p class="paragraph">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est alias omnis praesentium voluptatibus tenetur doloremque fuga veniam, cum ipsam!
                   </p>
 
-                  <h3 class="heading-teriary u-margin-bottom-small">
+                  <h3 class="heading-tertiary u-margin-bottom-small">
                     Live adventures like you never have before
                   </h3>
                   <p class="paragraph">
@@ -136,7 +140,7 @@ main tells search engines or screen readers that this is the main section of our
             </section>
 
             <!-- TOURS SECTION -->
-            <section class="section-tours">
+            <section class="section-tours" id="section-tours">
               <div class="u-center-text u-margin-bottom-big">
                 <h2 class="heading-secondary">
                   Most Popular Tours
@@ -171,7 +175,7 @@ main tells search engines or screen readers that this is the main section of our
                           <p class="cards_price-only">Only</p>
                           <p class="cards_price-value">$297</p>
                         </div>
-                          <a href="#" class="btn btn--white">Book now!</a>
+                          <a href="#popup" class="btn btn--white">Book now!</a>
                       </div>
                     </div>
 
@@ -205,7 +209,7 @@ main tells search engines or screen readers that this is the main section of our
                             <p class="cards_price-only">Only</p>
                             <p class="cards_price-value">$497</p>
                           </div>
-                            <a href="#" class="btn btn--white">Book now!</a>
+                            <a href="#popup" class="btn btn--white">Book now!</a>
                         </div>
                     </div>
 
@@ -239,7 +243,7 @@ main tells search engines or screen readers that this is the main section of our
                           <p class="cards_price-only">Only</p>
                           <p class="cards_price-value">$897</p>
                         </div>
-                          <a href="#" class="btn btn--white">Book now!</a>
+                          <a href="#popup" class="btn btn--white">Book now!</a>
                       </div>
 
                     </div>
@@ -369,7 +373,12 @@ main tells search engines or screen readers that this is the main section of our
         <!-- NEW FOOTER SECTION. BELOW the main tag  -->
         <footer class="footer">
           <div class="footer_logo-box">
-            <img src="img/logo-green-2x.png" alt="Full logo" class="footer_logo">
+
+            <picture class="footer_logo">
+              <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+              <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" class="footer_logo">
+            </picture>
+
           </div>
             <div class="row">
 
@@ -397,7 +406,23 @@ main tells search engines or screen readers that this is the main section of our
 
         </footer>
 
-
+        <div class="popup" id="popup">
+          <div class="popup_content">
+            <div class="popup_left">
+                <img src="img/nat-8.jpg" alt="Tour Photo" class="popup_img">
+                <img src="img/nat-9.jpg" alt="Tour Photo" class="popup_img">
+            </div>
+            <div class="popup_right">
+              <a href="#section-tours" class="popup_close">&times;</a>
+              <h2 class="heading-secondary u-margin-bottom-small">Start Booking Now</h2>
+              <h3 class="heading_tertiary u-margin-bottom-small">Important &ndash; Please read the terms before booking</h3>
+              <p class="popup_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, magni aspernatur corrupti odio vero totam ab. Ad deserunt quas, corporis, voluptatum culpa, consequuntur accusantium temporibus dicta architecto soluta tenetur reprehenderit!
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, magni aspernatur corrupti odio vero totam ab. Ad deserunt quas, corporis, voluptatum culpa, consequuntur accusantium temporibus dicta architecto soluta tenetur reprehenderit!
+              </p>
+              <a href="#" class="btn btn--green">Book Now</a>
+            </div>
+          </div>
+        </div>
 
         <!-- <section class="grid-test">
           <div class="row">

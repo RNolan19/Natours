@@ -25,6 +25,10 @@
     display: block;
     transition: all .3s;
 
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
     // gets rid of the blue link-style border when you click on input.
       &:focus {
         outline: none;
@@ -75,13 +79,18 @@
     // put the buttons side by side. Easier than floating
     width: 49%;
     display: inline-block;
+
+    @include respond(tab-port) {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
   }
 
   &_radio-label {
-    font-size: 1.6rem;
+    font-size: $default-font-size;
     // makes the mouse look like a hand
     cursor: pointer;
-    padding-left: 5rem;
+    padding-left: 4.5rem;
     position: relative;
   }
 

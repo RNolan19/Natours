@@ -17,7 +17,21 @@
     border-radius: 50%;
     // needs to be on top of the green circle
     z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba($color-black, .2);
+    text-align: center;
+// when you hover the icon , it turns into a pointer
+    cursor: pointer;
 
+    @include respond(tab-port) {
+      top: 4rem;
+      right: 4rem;
+
+      @include respond(phone) {
+        top: 3rem;
+        right: 3rem;
+      }
+
+    }
   }
 
   &_background {
@@ -41,16 +55,36 @@
 //VIMP. This blows up the background image so it takes up the whole viewport when you click on the dropdown
     // transform: scale(80);
 
+// these are custom transitions.
+// Can get them at cubic-bezier.com
+    transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+
+@include respond(tab-port) {
+    top: 4.5rem;
+    right: 4.5rem;
+}
+
+@include respond(phone) {
+  top: 3.5rem;
+  right: 3.5rem;
+}
   }
 
   &_nav {
     height: 100vh;
-    width: 100%;
+    // width: 100%;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     // this needs to be above the background and below the button
     z-index: 1500;
+
+    // to hide this temporarily
+    opacity: 0;
+    //the links still are still there even tho they're invisible, so you have to remove the width
+    width: 0;
+    // cool litle effect, Swoops in from the left, goes all the way to the right, then bounces back left a little
+    transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   }
 // centering the LIs with absolute positioning
@@ -111,4 +145,81 @@
 
     }
   }
+
+  // the checkbox hack.....EXTREMELY FUCKING COOL
+  // so this basically says when the checkbox label AKA text is checked, scale its sibling background element 80x
+  // remember this ~ means sibling element
+  &_checkbox:checked ~ &_background {
+    transform: scale(80)
+  }
+
+//and then do the same for the nav links, when the label is checked, change the opacity and width back to their normal settings
+  &_checkbox:checked ~ &_nav {
+    opacity: 1;
+    width: 100%;
+  }
+
+// ICON.  Three vertical lines on the button, created with pseudo elements
+  &_icon {
+    position: relative;
+    // brings all 3 lines down inside the circle
+    margin-top: 3.5rem;
+
+
+
+    // creates the original element AND elements BEFORE and AFTER the orginal element
+      &,
+      &::before,
+      &::after {
+        width: 3rem;
+        height: 2px;
+        background-color: $color-grey-dark-3;
+        // want them stacked on top of each odda
+        display: inline-block;
+
+      }
+
+// always need to give a content property to before and after pseudo properties
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        transition: all .2s;
+
+
+      }
+      // the span element is in the middle, so you move on above it, and one below it
+      &::before {top: -.8rem;}
+      &::after {top: .8rem;}
+  }
+
+//PCOOL. When you hover the button, change the pseudo elements by making the spread out
+  &_button:hover &_icon::before {
+    top: -1rem;
+  }
+
+  &_button:hover &_icon::after {
+    top: 1rem;
+  }
+
+  // VCOOL. Checkbox trick navigation_nav
+  // Turning the 3 vertical lines into an X
+
+  // when the checkbox is checked, make the item dissapear
+  &_checkbox:checked + &_button &_icon {
+    background-color: transparent;
+
+    &::before {
+      // 45 rotates the lines so they make an X
+      transform: rotate(135deg);
+      // top 0 puts them in the middle in the same position
+      top: 0;
+    }
+
+    &::after {
+      transform: rotate(-135deg);
+      top: 0;
+    }
+}
 }

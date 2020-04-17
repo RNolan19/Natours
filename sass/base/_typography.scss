@@ -1,9 +1,20 @@
+body {
+  color: $color-grey-dark;
+  /* everything related to font is put in the body. NOT the universal selector */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  // font-size: 1.6rem;
+  /* 1.7 times bigger than the standard line-height */
+  line-height: 1.7;
+}
+
 /* VCOOL. The h1 on the first page of a website is very important for SEO. V Important to put name of business there */
 .heading-primary {
   /* border: 1px white solid; */
   color: $color-white;
   margin-bottom: 6rem;
   text-transform: uppercase;
+
 
   &--main {
     /* // block elements create line breaks between individuals elements, aka they stack on top of eachother like blocks */
@@ -29,6 +40,11 @@
     // how many times you want the animation to occur
     animation-iteration-count: 3;
     */
+
+    @include respond(phone) {
+      font-size: 5rem;
+      letter-spacing: 1rem;
+    }
   }
   &--sub {
     display: block;
@@ -47,6 +63,11 @@
 
     /* PCool. This fixes elements if they look shaky with animation.... No one knows why  */
     backface-visibility: hidden;
+
+    @include respond(phone) {
+
+      letter-spacing: .5rem;
+    }
   }
 }
 
@@ -65,6 +86,14 @@
   color: transparent;
   letter-spacing: 2px;
   transition: all .2s;
+
+  @include respond(tab-port) {
+    font-size: 3rem;;
+  }
+// phone is smaller, so it has to come after the tab-port
+  @include respond(phone) {
+    font-size: 2.5rem;
+  }
 
   &:hover {
     // PCool. Skew tilts it X degrees one way or the other

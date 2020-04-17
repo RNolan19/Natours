@@ -30,6 +30,11 @@
   height: 95vh;
   position: relative;
 
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); // this is so it will work in all types of browsers. Chrome, Firefox, etc
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+
   &_logo-box {
     /* border: 1px blue solid; */
     /* once you use absolutely positioning, you can then use top right left to put it exactly where you want it to be */
@@ -40,6 +45,15 @@
 
     top: 4rem;
     left: 4rem;
+
+    @include respond(tab-port) {
+      top: 4rem;
+      right: 4rem;
+}
+      @include respond(phone) {
+        top: 3rem;
+        right: 3rem;
+      }
   }
 
   &__logo {

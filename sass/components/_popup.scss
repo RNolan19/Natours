@@ -1,0 +1,116 @@
+// this creates the black background outside of the pop up
+.popup {
+  position: relative;
+
+    height: 100vh;
+    width: 100%;
+    // doesn't move when you scroll
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8);
+    //want it on top of everything
+    z-index: 9999;
+// so this hides the popup
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s;
+// VCOOL
+// and then by using the target pseudo-class when you click on a button that has the popup as a target,
+// the pop up appears
+    &:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &_close {
+      &:link,
+      &:visited {
+        color: $color-grey-dark-3;
+        position: absolute;
+        top: 3%;
+        right: 2%;
+        transform: scale(3);
+        text-decoration: none;
+        display: inline-block;
+      }
+// VCOOL + easy....when you hover the X, change it to green
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    &:target &_content {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+  &_content {
+    // want it to occupy 75% of the container / vport
+    width: 75%;
+
+    background-color: $color-white;
+
+// old hockey trick to center it horizontall AND vertically
+    // margin: 0 auto would center it horizontally, but not vert
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.5);
+
+    // this is pretty much the default. Good to memorize. 2rem vertical shad. 4rem blur
+    box-shadow: 0 2rem 4rem rgba($color-black, .2);
+    border-radius: 3px;
+    // text-align: center;
+// need to do this to add table-cell down low
+    display: table;
+    // stops image from overlapping the border-radius
+    overflow: hidden;
+    // make it invisible
+    opacity: 0;
+    // how long it takes to open up
+    // the extra .2 actually gives it a slight delay to open up
+    transition: all .4s .2s;
+  }
+
+  &_left {
+    width: 33.3333%;
+      // this gives the right the same height as the left
+    display: table-cell;
+  }
+
+  &_right {
+    width: 66.6666666%;
+    // VCOOL..this gives the right the same height as the left
+    display: table-cell;
+    // and then vertical align middle, does as its name implies...
+    // CAN ONLY USE ON TABLE CELLS....SNEAKY SNEAKY
+    // can also do top and bottom
+    vertical-align: middle;
+    padding: 3rem 5rem;
+  }
+
+  &_img {
+    display: block;
+    width: 100%;
+  }
+
+  &_text {
+      margin-bottom: 5rem;
+      font-size: 1.4rem;
+
+      // V Cool this splits the paragraph into 2 columns VERY EASILY
+      column-count: 2;
+      // how much space you want between the columns
+      column-gap: 4rem;
+      // this just creates a colored border / line in the middle separating the columns
+      column-rule: 1px solid $color-grey-light-2;
+
+// V Cool this splits the paragraph into 2 columns VERY EASILY
+      -moz-column-count: 2;
+      // how much space you want between the columns
+      -moz-column-countcolumn-gap: 4rem;
+      // this just creates a colored border / line in the middle separating the columns
+      -moz-column-rule: 1px solid $color-grey-light-2;
+  }
+}
